@@ -1,11 +1,11 @@
-SEARCH_BUTTON_ID = '#searchButton';
+SEARCH_BUTTON_ID = 'searchButton';
 SEARCH_INTERVAL_MS = 30 * 1000;
 PROCESSING_DELAY_MS = 5 * 1000;
 
 function requestPermissions() {
   if (Notification.permission === 'granted')
     return;
-  
+
   const dialog = document.createElement('div');
   const button = document.createElement('button');
 
@@ -38,10 +38,10 @@ function requestPermissions() {
   document.body.appendChild(dialog);
 }
 
-(function () {
+(function() {
   requestPermissions();
 
-  const searchButton = document.querySelector(SEARCH_BUTTON_ID);
+  const searchButton = document.getElementById(SEARCH_BUTTON_ID);
 
   if (!searchButton) {
     console.warn('Could not find search button, quitting...');
@@ -59,7 +59,12 @@ function requestPermissions() {
       }
 
       const message = `[${timestamp}] Search returned ${table.childElementCount} results.`;
-      console.info(new Notification(`Found reservations!`, { body: message }).body);
+      console.log(message);
+
+      if (table.childElementCount > 0)
+        new Notification(`Found ${table.childElementCount} reservations!`, {
+          body: message
+        });
     }, PROCESSING_DELAY_MS);
   };
 
