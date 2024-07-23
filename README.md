@@ -1,4 +1,4 @@
-# Reservations watcher for [esveikata.lt](https://ipr.esveikata.lt)
+# Reservations watcher for [ipr.esveikata.lt](https://ipr.esveikata.lt)
 ### Instructions
 This script will press the search button every 30 seconds and display a notification if any results are found.
 1. Open https://ipr.esveikata.lt/ and set your search filters.
